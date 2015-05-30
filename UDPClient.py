@@ -1,16 +1,16 @@
 from socket import *
 import sys
 
-serverName = "localhost"
-serverPort = 9999
+server_name = "localhost"
+server_port = 9999
 
-clientSocket = socket(AF_INET, SOCK_DGRAM)
+client_socket = socket(AF_INET, SOCK_DGRAM)
 
 while 1:
     sentence = raw_input("Lower cased sentence (quit to exit): ")
     if sentence == "quit":
-        clientSocket.close()
+        client_socket.close()
         sys.exit(0)
-    clientSocket.sendto(sentence, (serverName, serverPort))
-    upcasedSentence, serverAddress = clientSocket.recvfrom(2048)
-    print upcasedSentence
+    client_socket.sendto(sentence, (server_name, server_port))
+    upcased_sentence, serverAddress = client_socket.recvfrom(2048)
+    print upcased_sentence
